@@ -235,6 +235,9 @@ module RankedModel
 
           reset_ranks!
 
+          p "TransitionMetal.count: #{TransitionMetal.count}"
+          p "current_order.count: #{current_order.count}"
+          p "TransitionMetal.count == current_order.count: #{TransitionMetal.count == current_order.count}"
           current_order.each.with_index(1) do |item, position|
             new_rank = (gap_size * position) + RankedModel::MIN_RANK_VALUE
 

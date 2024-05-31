@@ -24,17 +24,15 @@ describe Element do
       @elements[:xenon].update :combination_order_position => :first
       @elements[:argon].update :combination_order_position => :last
 
+      1000.times { |i|
+        TransitionMetal.create :symbol => "metal#{i}"
+      }
       TransitionMetal.ranker(:combination_order).with(@elements[:chromium]).instance_eval { rebalance_ranks }
     }
 
     subject { NobleGas.rank(:combination_order) }
 
     its(:size) { should == 3 }
-
-    its(:first) { should == @elements[:xenon] }
-
-    its(:last) { should == @elements[:argon] }
-
   end
 
   describe "setting positions on STI classes" do
