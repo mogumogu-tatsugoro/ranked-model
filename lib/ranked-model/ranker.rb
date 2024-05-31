@@ -1,3 +1,5 @@
+require 'debug'
+
 module RankedModel
 
   class InvalidScope < StandardError; end

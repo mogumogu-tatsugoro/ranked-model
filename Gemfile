@@ -4,8 +4,10 @@ source "https://rubygems.org"
 gemspec
 
 group :sqlite do
-  gem "sqlite3", platform: :ruby
+  gem 'sqlite3', '~> 1.4'
 end
+
+gem 'debug', group: [:development, :test]
 
 group :postgresql do
   gem "pg", platform: :ruby

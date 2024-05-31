@@ -13,6 +13,14 @@ require 'database_cleaner'
 # Uncomment this to see Active Record logging for tests
 # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
+if ActiveRecord::VERSION::MAJOR >= 6
+  class ActiveRecord::SchemaMigration
+    def self.table_name
+      'schema_migrations'
+    end
+  end
+end
+
 RSpec.configure do |config|
   config.mock_with :mocha
 
